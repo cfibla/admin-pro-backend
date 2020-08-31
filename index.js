@@ -14,17 +14,15 @@ dbConnection();
 // user: cfibla
 // password: alternativa10
 
+// Lectura y parse del BODY
+app.use(express.json());
+
 // Configuración CORS
 app.use(cors());
 
 // Rutas
-app.get('/', (req, res) => {
-    res.json({
-        ok: true,
-        msg: 'Hola Mundo'
-    });
-});
-
+app.use('/api/usuarios', require('./routes/usuarios'));
+app.use('/api/login', require('./routes/auth'));
 
 // Arranca el servidor
 app.listen(process.env.PORT, () => {
