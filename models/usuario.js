@@ -31,7 +31,7 @@ const UsuarioSchema = Schema({
 });
 
 UsuarioSchema.method('toJSON', function() {
-    // Separa "__v", "_id" y "password" del objeto de usuario
+    // Separa "__v", "_id" y "password" del objeto "usuario"
     const { __v, _id, password, ...object } = this.toObject();
 
     // Cambia el nombre de la propiedad "_id" por "uid"
