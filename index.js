@@ -9,16 +9,21 @@ const { dbConnection } = require('./database/config');
 // Crea el servidor de express
 const app = express();
 
+
+// Configuración CORS
+app.use(cors());
+
+// Lectura y parse del BODY
+app.use(express.json());
+
 // MongoDB
 dbConnection();
 // user: cfibla
 // password: alternativa10
 
-// Lectura y parse del BODY
-app.use(express.json());
+//Directorio público
+app.use(express.static('public'));
 
-// Configuración CORS
-app.use(cors());
 
 // Rutas
 app.use('/api/usuarios', require('./routes/usuarios'));
