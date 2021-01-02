@@ -13,6 +13,30 @@ const getMedicos = async(req, res = response) => {
     });
 };
 
+const getMedicoById = async(req, res = response) => {
+
+    const id = req.params.id;
+
+    try {
+
+        const medico = await Medico.findById(id)
+            .populate('usuario', 'nombre email img')
+            .populate('hospital', 'nombre');
+        res.json({
+            ok: true,
+            medico
+        });
+
+    } catch (error) {
+        console.log(error);
+        res.json({
+            ok: false,
+            msg: 'No se puede cargar el médico por ID'
+        });
+    }
+
+};
+
 const crearMedico = async(req, res = response) => {
 
     console.log(req.body);
@@ -119,5 +143,6 @@ module.exports = {
     getMedicos,
     crearMedico,
     actualizarMedico,
-    borrarMedico
+    borrarMedico,
+    getMedicoById
 };

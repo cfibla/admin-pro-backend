@@ -73,7 +73,7 @@ const fileUpload = (req, res = response) => {
 };
 
 const retornaImagen = (req, res = response) => {
-    console.log('HOLA');
+    // console.log('HOLA');
     const tipo = req.params.tipo;
     const foto = req.params.foto;
 
@@ -85,7 +85,7 @@ const retornaImagen = (req, res = response) => {
         // Envía el archivo como respuesta (no un Json)
         res.sendFile(pathImg);
     } else {
-        const pathImg = path.join(__dirname, `../uploads/no-img.jpg`);
+        const pathImg = path.join(__dirname, `../uploads/no-img.png`);
         // Envía imagen por defecto
         res.sendFile(pathImg);
     }
